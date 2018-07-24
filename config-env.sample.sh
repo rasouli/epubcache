@@ -1,0 +1,26 @@
+# /bin/bash
+export EPUB_CACHE_ENV=1
+export EPUB_CACHE_CONFIG_DB_DATABASE=test
+export EPUB_CACHE_CONFIG_DB_HOST=localhost
+export EPUB_CACHE_CONFIG_DB_PASSWORD=1
+export EPUB_CACHE_CONFIG_DB_PORT=3036
+export EPUB_CACHE_CONFIG_DB_USER=root
+export EPUB_CACHE_CONFIG_LOG_PATH=/usr/local/apps/go_path/src/epubcache/samples/log
+export EPUB_CACHE_CONFIG_DRIVE_FILES_ROOT_PATH=/usr/local/apps/go_path/src/epubcache/samples/drive/data
+export EPUB_CACHE_CONFIG_STORAGE_PATH=/usr/local/apps/go_path/src/epubcache/samples/storage
+export EPUB_CACHE_CONFIG_STORAGE_PERMISSION=0775
+export EPUB_CACHE_CONFIG_NOTIFY_SERVER=localhost:8081
+export EPUB_CACHE_CONFIG_LINK_DURATION=59
+export EPUB_CACHE_CONFIG_SERVE_DIRECTORY=/usr/local/apps/go_path/src/epubcache/samples/serve
+export EPUB_CACHE_CONFIG_SERVE_URL=https://drive.lernito.com/cache
+export EPUB_CACHE_CONFIG_OWNER_GID=1000
+export EPUB_CACHE_CONFIG_OWNER_UID=1000
+export EPUB_CACHE_CONFIG_REMOVE_INTERVAL=30
+export EPUB_CACHE_CONFIG_CACHE_ATTRIBUTE_FILE_NAME=attrs.json
+export EPUB_CACHE_CONFIG_CACHE_COVER_FILE_NAME=cover
+export EPUB_CACHE_CONFIG_CACHE_SUB_DIR_NAME=_cache
+export EPUB_CACHE_COVER_QUALITY=30
+export EPUB_CACHE_CONFIG_COVER_SIZE=100x150
+
+
+go run main.go

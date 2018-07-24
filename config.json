@@ -1,0 +1,25 @@
+{
+    "storagePath": "/usr/local/apps/go_path/src/epubcache/samples/storage",
+    "storagePermission": "0775",
+    "driveFilesRootPath": "/usr/local/apps/go_path/src/epubcache/samples/drive/data",
+    "tempStoragePath": "/tmp",
+    "notifyServer": "localhost:8081",
+    "logPath": "/usr/local/apps/go_path/src/epubcache/samples/log",
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "1",
+        "database": "test"
+    },
+    "linkDuration": 59,
+    "serveDirectory": "/usr/local/apps/go_path/src/epubcache/samples/serve",
+    "serveUrl": "https://drive.lernito.com/cache",
+    "ownerGid": 1000,
+    "ownerUid": 1000,
+    "removeInterval": 1,
+    "coverQuality": 30,
+    "coverSize": "100x150",
+    "referenceStorePath": "/usr/local/apps/go_path/src/epubcache/samples/storage",
+    "fileHashLen": 20
+}

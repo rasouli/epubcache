@@ -1,0 +1,80 @@
+FROM golang:alpine
+
+# ENV EPUB_CACHE_ENV=1
+# ENV EPUB_CACHE_CONFIG_DB_DATABASE=test
+# ENV EPUB_CACHE_CONFIG_DB_HOST=localhost
+# ENV EPUB_CACHE_CONFIG_DB_PASSWORD=1
+# ENV EPUB_CACHE_CONFIG_DB_PORT=3036
+# ENV EPUB_CACHE_CONFIG_DB_USER=root
+# ENV EPUB_CACHE_CONFIG_LOG_PATH=/epubcache/logs
+# ENV EPUB_CACHE_CONFIG_DRIVE_FILES_ROOT_PATH=/epubcache/drive/
+# ENV EPUB_CACHE_CONFIG_STORAGE_PATH=/epubcache/storage
+# ENV EPUB_CACHE_CONFIG_STORAGE_PERMISSION=0775
+# ENV EPUB_CACHE_CONFIG_NOTIFY_SERVER=localhost:8081
+# ENV EPUB_CACHE_CONFIG_LINK_DURATION=59
+# ENV EPUB_CACHE_CONFIG_SERVE_DIRECTORY=/epubcache/serve
+# ENV EPUB_CACHE_CONFIG_SERVE_URL=https://drive.lernito.com/cache
+# ENV EPUB_CACHE_CONFIG_OWNER_GID=1000
+# ENV EPUB_CACHE_CONFIG_OWNER_UID=1000
+# ENV EPUB_CACHE_CONFIG_REMOVE_INTERVAL=30
+
+
+# cache source
+#RUN mkdir /go/src/epubcache
+
+# cache logs
+RUN mkdir -p /epubcache/logs 
+
+
+# cache storage (where extracted files are kept)
+RUN mkdir -p /epubcache/storage
+
+# path where drive files are kept ("datadirectory" configuration in drive) 
+RUN mkdir -p /epubcache/drive
+
+# path where symlinks created by the cache server will be served via http (like nginx)
+RUN mkdir -p /epubcache/serve
+
+RUN ["apk", "add", "--no-cache" ,"bash" ,"git" ,"openssl", "openssh", "imagemagick", "file"]
+
+
+
+# RUN go get -v -d github.com/dsnet/compress/bzip2/internal/sais
+# RUN go get -v -d github.com/dsnet/compress/internal/errors
+# RUN go get -v -d github.com/dsnet/compress/internal
+# RUN go get -v -d github.com/golang/snappy
+# RUN go get -v -d github.com/nwaples/rardecode
+# RUN go get -v -d github.com/dsnet/compress
+# RUN go get -v -d github.com/dsnet/compress/internal/prefix
+# RUN go get -v -d github.com/pierrec/xxHash/xxHash32
+# RUN go get -v -d github.com/ulikunitz/xz/internal/xlog
+# RUN go get -v -d github.com/pierrec/lz4
+# RUN go get -v -d github.com/ulikunitz/xz/internal/hash
+# RUN go get -v -d github.com/ulikunitz/xz/lzma
+# RUN go get -v -d github.com/dsnet/compress/bzip2
+# RUN go get -v -d github.com/jinzhu/inflection
+# RUN go get -v -d github.com/jinzhu/gorm
+# RUN go get -v -d github.com/satori/go.uuid
+# RUN go get -v -d github.com/go-sql-driver/mysql
+# RUN go get -v -d golang.org/x/sys/unix
+# RUN go get -v -d github.com/ulikunitz/xz
+# RUN go get -v -d github.com/mholt/archiver
+# RUN go get -v -d github.com/jinzhu/gorm/dialects/mysql
+# RUN go get -v -d golang.org/x/crypto/ssh/terminal
+# RUN go get -v -d github.com/sirupsen/logrus
+RUN go get github.com/codegangsta/gin
+
+# a place for shell scripts (entrypoint)
+RUN mkdir -p /epubcache/scripts
+COPY docker/entrypoint.sh /epubcache/scripts
+RUN chmod a+x /epubcache/scripts/entrypoint.sh
+
+WORKDIR /go/src/epubcache
+COPY . .
+
+
+#RUN go-wrapper download
+RUN go install
+
+ENTRYPOINT [ "/epubcache/scripts/entrypoint.sh" ]
+

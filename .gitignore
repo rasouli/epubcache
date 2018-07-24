@@ -1,0 +1,8 @@
+samples/drive/data/*
+samples/log/*
+samples/serve/*
+samples/storage/*
+samples/tmp/*
+.idea/workspace.xml
+.idea/*
+.idea

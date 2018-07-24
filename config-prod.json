@@ -1,0 +1,20 @@
+{
+  "storagePath": "/var/www/cache/storage",
+  "storagePermission": "0775",
+  "driveFilesRootPath": "/var/www/drive/data/",
+  "logPath": "/var/www/cache/logs",
+  "notifyServer": "localhost:8081",
+  "db":{
+    "host":"localhost",
+    "port":3306,
+    "user":"ca",
+    "password":"d445566!",
+    "database":"cache"
+  },
+  "linkDuration": 59,
+  "serveDirectory": "/var/www/cache/epub",
+  "serveUrl":"https://drive.lernito.com/cache",
+  "ownerGid":33,
+  "ownerUid":33,
+  "removeInterval": 1
+}

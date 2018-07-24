@@ -1,0 +1,5 @@
+{
+  "user":"rose",
+  "files" : ["files/book.pdf", "files/Tamadon.epub"],
+  "hashes": ["0df855ef9a8a5cb16af149d2f8553baf446754eb", "917b7a9927d9f25cad7743eb9a091b22b0d0946c"]
+}
